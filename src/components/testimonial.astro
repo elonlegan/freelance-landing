@@ -1,0 +1,37 @@
+---
+import ContentSection from "~/components/content-section.astro";
+import { SITE } from "~/config";
+---
+
+{SITE.testimonial && (
+  <ContentSection title="Lo que dicen" id="testimonial">
+    <Fragment slot="lead">
+      Lo que dice un cliente sobre el proyecto Abordando.
+    </Fragment>
+    <blockquote class="mx-auto flex max-w-2xl flex-col items-center gap-6 border border-default bg-offset px-6 py-8 sm:flex-row sm:items-start sm:gap-8 sm:px-10 sm:text-left">
+      {SITE.testimonial.image && (
+        <img
+          src={SITE.testimonial.image}
+          alt=""
+          class="size-20 shrink-0 rounded-full object-cover ring-2 ring-primary/30"
+          width="80"
+          height="80"
+          loading="lazy"
+        />
+      )}
+      <div class="flex-1">
+        <p class="font-medium text-lg leading-relaxed text-default">
+          "{SITE.testimonial.quote}"
+        </p>
+        <footer class="mt-4 flex flex-wrap items-center gap-2">
+          <cite class="not-italic font-semibold text-primary">
+            {SITE.testimonial.author}
+          </cite>
+          {SITE.testimonial.role && (
+            <span class="text-offset text-sm">— {SITE.testimonial.role}</span>
+          )}
+        </footer>
+      </div>
+    </blockquote>
+  </ContentSection>
+)}

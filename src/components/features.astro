@@ -2,12 +2,13 @@
 import { Icon } from "astro-icon/components";
 import ContentSection from "~/components/content-section.astro";
 import type { FeatureItem } from "~/types";
+import { SITE } from "~/config";
 
 const features: Array<FeatureItem> = [
   {
-    title: "Landing pages y webs simples",
+    title: "Landing pages y webs que venden",
     description:
-      "Webs y landings para negocios: entrega rápida y precio claro.",
+      "Aumenta tus clientes con una web profesional lista en días. Precio claro y entrega rápida.",
     icon: "mdi:web",
   },
   {
@@ -19,7 +20,7 @@ const features: Array<FeatureItem> = [
   {
     title: "Sistemas web y productos avanzados",
     description:
-      "Paneles de administración, SaaS o productos web más complejos cuando tu proyecto crece.",
+      "Haz crecer tu negocio: paneles de administración, SaaS o productos web cuando tu proyecto lo pida.",
     icon: "mdi:application-cog",
   },
 ];
@@ -27,10 +28,15 @@ const features: Array<FeatureItem> = [
 
 <ContentSection title="Servicios" id="features">
   <Fragment slot="lead">
-    Lo que necesitas para tener presencia en internet: desde una{" "}
+    Todo lo que necesitas para una web profesional, rápida y sin complicaciones: desde una{" "}
     <span class="text-primary">landing</span> hasta un{" "}
     <span class="text-primary">producto web</span> completo.
   </Fragment>
+  {SITE.pricingFrom && (
+    <p class="text-center text-offset text-sm">
+      Proyectos {SITE.pricingFrom} — presupuesto sin compromiso.
+    </p>
+  )}
   <ul class="grid max-w-6xl grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
     {
       features.map(({ title, description, icon }) => (

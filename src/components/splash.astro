@@ -10,7 +10,7 @@ const widths = [450, 800];
 const sizes = '(min-width: 640px) 42vw, 67vw';
 ---
 
-<section class='relative h-full bg-black'>
+<section class='relative min-h-[100dvh] bg-black'>
 	<Starfield />
 	<div
 		id='splash-bg-fallback'
@@ -19,21 +19,21 @@ const sizes = '(min-width: 640px) 42vw, 67vw';
 		<HeroImage />
 	</div>
 	<div
-		class='relative grid h-full place-items-center sm:grid-cols-2'
+		class='relative grid min-h-[100dvh] place-items-center sm:grid-cols-2'
 	>
 		<div
-			class='flex flex-col items-center gap-4 self-end px-4 sm:items-end sm:gap-6 sm:self-auto sm:justify-self-end sm:px-0'
+			class='flex flex-col items-center gap-4 self-end px-4 pb-6 pt-4 sm:items-end sm:gap-6 sm:self-auto sm:justify-self-end sm:px-0 sm:pb-0 sm:pt-0'
 		>
 			<div
 				class='gradient-text text-center font-extrabold tracking-tighter text-5xl sm:text-right md:text-7xl'
 			>
-				Tu web lista en poco tiempo — sin complicaciones
+				Haz crecer tu negocio con una web profesional
 			</div>
 			<p
 				class='max-w-md text-center text-white/90 text-lg sm:text-right'
 			>
 				Landing pages, webs corporativas y mejoras de sitios
-				existentes. Si necesitas algo más complejo (paneles,
+				existentes. Rápido, sin complicaciones. Si necesitas algo más complejo (paneles,
 				SaaS), también puedo ayudarte.
 			</p>
 			<a
@@ -42,12 +42,12 @@ const sizes = '(min-width: 640px) 42vw, 67vw';
 				rel='noopener noreferrer'
 				class='btn border-2 border-white bg-white px-6 py-4 text-black hover:bg-white/90 hover:text-black focus:ring-white focus:ring-offset-black'
 			>
-				Contáctame por WhatsApp
+				Lanza tu web hoy mismo
 			</a>
 		</div>
 		<div
 			id='astronaut'
-			class='w-2/3 max-w-3xl self-start sm:w-10/12 sm:self-auto sm:justify-self-start'
+			class='w-1/2 max-w-[280px] self-start sm:w-10/12 sm:max-w-3xl sm:self-auto sm:justify-self-start'
 		>
 			<Image
 				class='h-full w-full object-cover'

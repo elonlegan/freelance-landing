@@ -22,21 +22,29 @@ const displayUrl = shortUrl(href);
 ---
 
 <a
-  class="group aspect-video hover:!text-default"
+  class="group block hover:!text-default"
   href={href}
   target={href.startsWith("http") ? "_blank" : undefined}
   rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
 >
-  <figure class="relative h-full w-full overflow-hidden">
-    <img
-      class="h-full w-full bg-cover object-cover transition-all duration-300 group-hover:scale-110 group-hover:opacity-20 group-focus:scale-110 group-focus:opacity-20"
-      src={project.image}
-      alt={`Screenshot: ${project.title}`}
-      loading="lazy"
-      width="800"
-      height="450"
-    />
-    <figcaption class="absolute inset-0">
+  <figure class="relative h-full w-full overflow-hidden rounded-xl border-2 border-default/20 bg-default/5 shadow-lg ring-1 ring-black/5 transition-shadow duration-300 group-hover:shadow-xl group-focus:shadow-xl">
+    <!-- Browser-style top bar for mockup feel -->
+    <div class="flex h-7 items-center gap-1.5 border-b border-default/10 bg-default/10 px-3" aria-hidden="true">
+      <span class="size-2 rounded-full bg-default/30" />
+      <span class="size-2 rounded-full bg-default/30" />
+      <span class="size-2 rounded-full bg-default/30" />
+    </div>
+    <div class="aspect-video overflow-hidden">
+      <img
+        class="h-full w-full bg-cover object-cover transition-all duration-300 group-hover:scale-105 group-hover:opacity-90 group-focus:scale-105 group-focus:opacity-90"
+        src={project.image}
+        alt={`Screenshot: ${project.title}`}
+        loading="lazy"
+        width="800"
+        height="450"
+      />
+    </div>
+    <figcaption class="absolute inset-0 top-7">
       <div
         class="flex h-full flex-col items-center justify-center gap-1.5 p-3 opacity-0 transition-all duration-300 group-hover:opacity-100 group-focus:opacity-100"
       >

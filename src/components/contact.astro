@@ -1,0 +1,20 @@
+---
+import ContentSection from "~/components/content-section.astro";
+import { SITE } from "~/config";
+---
+
+<ContentSection title="¿Quieres tu web lista rápido?" id="contact">
+  <Fragment slot="lead">
+    Envíame un mensaje y empezamos hoy mismo.
+  </Fragment>
+  <div class="flex flex-wrap items-center justify-center gap-4">
+    <a
+      href={SITE.whatsAppUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn flex items-center justify-center gap-3 border-2 border-current px-6 py-4"
+    >
+      <span>Contáctame por WhatsApp</span>
+    </a>
+  </div>
+</ContentSection>

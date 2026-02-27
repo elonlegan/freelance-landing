@@ -6,5 +6,5 @@ export const SITE = {
   description:
     "Páginas web y landing pages rápidas y económicas. Contáctame por WhatsApp y empezamos hoy.",
   /** Replace with your WhatsApp number (country code + number, no + or spaces). */
-  whatsAppUrl: "https://wa.me/123456789",
+  whatsAppUrl: "https://wa.me/+34600698114",
 } as const;

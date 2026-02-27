@@ -1,15 +1,7 @@
 ---
-import { getCollection } from "astro:content";
 import ContentSection from "~/components/content-section.astro";
 import ShowcaseCard from "~/components/showcase-card.astro";
-
-const featuredSites = await getCollection(
-  "showcase",
-  ({ data }) => "featured" in data,
-);
-const orderedSites = featuredSites.sort(
-  (a, b) => a.data.featured! - b.data.featured!,
-);
+import { PROJECTS } from "~/data/projects";
 ---
 
 <ContentSection title="Proyectos recientes" id="showcase">
@@ -18,7 +10,9 @@ const orderedSites = featuredSites.sort(
   </Fragment>
   <div class="max-w-6xl">
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-      {orderedSites.map((site) => <ShowcaseCard site={site} />)}
+      {PROJECTS.map((project) => (
+        <ShowcaseCard project={project} />
+      ))}
     </div>
   </div>
 </ContentSection>

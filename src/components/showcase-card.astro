@@ -1,37 +1,59 @@
 ---
-import { Image } from "astro:assets";
-import type { CollectionEntry } from "astro:content";
+import type { Project } from "~/data/projects";
 
 export interface Props {
-  site: CollectionEntry<"showcase">;
+  project: Project;
 }
 
-const { site } = Astro.props;
+const { project } = Astro.props;
+const href = project.links[0] ?? "#";
 
-const widths = [450, 800];
-const sizes = "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw";
+function shortUrl(url: string): string {
+  if (!url || url === "#") return url;
+  try {
+    const u = url.replace(/^https?:\/\//i, "").replace(/^www\./i, "").replace(/\/+$/, "");
+    const host = u.split("/")[0];
+    return host || u;
+  } catch {
+    return url;
+  }
+}
+const displayUrl = shortUrl(href);
 ---
 
-<a class="group aspect-video hover:!text-default" href={site.data.url}>
+<a
+  class="group aspect-video hover:!text-default"
+  href={href}
+  target={href.startsWith("http") ? "_blank" : undefined}
+  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+>
   <figure class="relative h-full w-full overflow-hidden">
-    <Image
+    <img
       class="h-full w-full bg-cover object-cover transition-all duration-300 group-hover:scale-110 group-hover:opacity-20 group-focus:scale-110 group-focus:opacity-20"
-      src={site.data.image}
-      widths={widths}
-      sizes={sizes}
-      alt={`A screenshot of ${site.data.url}`}
+      src={project.image}
+      alt={`Screenshot: ${project.title}`}
+      loading="lazy"
+      width="800"
+      height="450"
     />
     <figcaption class="absolute inset-0">
       <div
-        class="flex h-full flex-col items-center justify-center gap-2 p-4 opacity-0 transition-all duration-300 group-hover:opacity-100 group-focus:opacity-100"
+        class="flex h-full flex-col items-center justify-center gap-1.5 p-3 opacity-0 transition-all duration-300 group-hover:opacity-100 group-focus:opacity-100"
       >
-        <h3 class="text-center font-extrabold uppercase text-xl">
-          {site.data.title}
+        <h3 class="text-center font-extrabold text-lg leading-tight">
+          {project.title}
         </h3>
-        {site.data.description && (
-          <p class="max-w-sm text-center text-sm">{site.data.description}</p>
+        <p class="max-w-xs text-center text-xs leading-snug">
+          {project.description}
+        </p>
+        {project.tags.length > 0 && (
+          <p class="text-[10px] text-offset">
+            {project.tags.join(" · ")}
+          </p>
         )}
-        <p class="border border-current px-4 py-2 text-sm">{site.data.url}</p>
+        <p class="max-w-full border border-current px-3 py-1.5 text-[10px] break-all">
+          {displayUrl}
+        </p>
       </div>
     </figcaption>
   </figure>
